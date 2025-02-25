@@ -1,6 +1,5 @@
-/*Now creating person schema*/
 const mongoose=require('mongoose');
-const personSchema=mongoose.Schema({
+const personSchema=new mongoose.Schema({
     name:{
         type:String,
         require:true
@@ -17,21 +16,18 @@ const personSchema=mongoose.Schema({
         type:String,
         require:true
     },
-    work:{
-        type:String,
-        enum:["chef","owner","waiter"],
-        require:true
-
-    },
     address:{
         type:String,
         require:true
     },
-    salary:
-    {
-        type:Number
+    work:{
+        type:String,
+        enum:["chef","owner","manager"],
+    },
+    salary:{
+        type:Number,
+        require:true
     }
 })
-/*Added comment for testing*/
-const Person=mongoose.model("Person",personSchema);
+const Person=mongoose.model('Person',personSchema);
 module.exports=Person;

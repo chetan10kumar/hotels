@@ -1,2 +1,2 @@
-#File which are present here the git will ignore them
-node_module/
+#in this file th file we dont want to track remains
+node_modules/

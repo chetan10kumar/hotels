@@ -1,25 +1,26 @@
-/*Mongoose act as a bridge in connection of node js server and mongo db server*/
+/*This file will act as bridge between node js server and mongo db server*/
 const mongoose=require('mongoose');
-/*Defining mongoDB url*/
+/*Now defining the mongoDb url*/
 const mongoUrl="mongodb://localhost:27017/restaurants";
-/*Establishing connection*/
+/*Now establishing the connection*/
 mongoose.connect(mongoUrl,{
     useNewUrlParser:true,
-    useUnifiedTopology:true      /*These parameters re showing that we are working on updated version of mongoDb*/
-})
-/*MongoDb maintains a object that performs in connection*/
+    useUnifiedTopology:true
+});
+/*Now defining mongoose object which performs in mongoDb connection*/
 const db=mongoose.connection;
-/*Event listener reacts to different states of mongoDb connection*/
+/*Now event listeners-event listeners reacts to different states of mongoDb connection*/
 db.on('connected',()=>
 {
-    console.log("Connected to MongoDb server");
+    console.log("Connected to mongoDb server");
 })
-db.on('error',()=>
+db.on('error',(err)=>
 {
-    console.log("Error while connecting to MongoDb server");
+    console.log("error while connecting to mongoDb server");
 })
 db.on('disconnected',()=>
 {
-    console.log("Diconnected from mongoDb server");
+    console.log("Disconnected to mongoDb server");
 })
+/*Now exporting the mongoDb connection*/
 module.exports=db;

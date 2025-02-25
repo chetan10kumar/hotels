@@ -84,19 +84,19 @@ fs.appendFile('greeting.txt','Hi'+user.username+'!\n',()=>
 /*Creating a Server using express*/
 const express=require('express');
 const app=express();
-const bodyParser=require('body-parser');
-const personRoutes=require('./routes/personRoutes');
-app.use(bodyParser.json());
-const db=require('./db')
-app.use('/person',personRoutes)
+const db=require('./db');
 
+const bodyParser=require('body-parser');
+const personRoutes=require('./routes/personRoutes')
+
+app.use(bodyParser.json());
+app.use('/person',personRoutes);
 app.get('/',(req,res)=>
 {
     res.send("Hello World");
 })
 
-
 app.listen(3000,()=>
 {
-    console.log("Server is Running on port Number:3000");
+    console.log("Server is running on port:3000");
 })
